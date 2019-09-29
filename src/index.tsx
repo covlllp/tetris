@@ -1,4 +1,14 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 
-render(<div>Hello World!</div>, document.getElementById('react-content'));
+import { Canvas } from 'component/canvas';
+
+render(
+  <div>
+    Hello World!
+    <div>
+      <Canvas />
+    </div>
+  </div>,
+  document.getElementById('react-content'),
+);

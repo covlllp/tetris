@@ -12,7 +12,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.css'],
-    modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   module: {
     rules: [
@@ -29,8 +29,9 @@ module.exports = {
         test: /\.css$/,
         loader: 'css-loader',
         options: {
-          modules: true,
-          localIdentName: '[name]__[local]__[hash:base64]',
+          modules: {
+            localIdentName: '[name]__[local]__[hash:base64]',
+          },
         },
       },
     ],
@@ -51,4 +52,4 @@ module.exports = {
       globPattern: 'src/**/*.css',
     }),
   ],
-}
+};
