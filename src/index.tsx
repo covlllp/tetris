@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { devToolsEnhancer } from 'redux-devtools-extension';
 
-import { Canvas } from 'component/canvas';
+import { reducer } from 'data/reducer';
+
+import { App } from 'container/app';
+
+const store = createStore(reducer, devToolsEnhancer({}));
 
 render(
-  <div>
-    Hello World!
-    <div>
-      <Canvas />
-    </div>
-  </div>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('react-content'),
 );
