@@ -34,11 +34,11 @@ export class Painter {
   }
 
   get blockWidth(): number {
-    return Math.floor(this.width / this.numColumns);
+    return this.width / this.numColumns;
   }
 
   get blockHeight(): number {
-    return Math.floor(this.height / this.numRows);
+    return this.height / this.numRows;
   }
 
   setDimensions({ width, height }: Dimensions) {
@@ -66,11 +66,8 @@ export class Painter {
   private paintBlock(row: number, col: number, color: Color): void {
     const { blockWidth, blockHeight } = this;
     this.context.fillStyle = colorToFillColor(color);
-    this.context.fillRect(
-      row * blockWidth,
-      col * blockHeight,
-      blockWidth,
-      blockHeight,
-    );
+    const xStart = col * blockWidth;
+    const yStart = (this.numRows - 1 - row) * blockHeight;
+    this.context.fillRect(xStart, yStart, blockWidth, blockHeight);
   }
 }
