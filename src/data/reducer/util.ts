@@ -1,5 +1,6 @@
-import { Color } from 'data/types';
 import { clone } from 'lodash';
+
+import { BlockType } from 'data/types';
 
 export function createEmptyBoard(height: number, width: number): null[][] {
   const row = [];
@@ -9,9 +10,21 @@ export function createEmptyBoard(height: number, width: number): null[][] {
   const board = [];
   for (let i = 0; i < height; i++) {
     const newRow = clone(row);
-    const j = i % width;
-    newRow[j] = { color: Color.Blue };
     board.push(newRow);
   }
   return board;
+}
+
+export function getRandomPiece(): BlockType {
+  const blockTypes = [
+    BlockType.S,
+    BlockType.Z,
+    BlockType.T,
+    BlockType.L,
+    BlockType.ReverseL,
+    BlockType.Square,
+    BlockType.Line,
+  ];
+  const index = Math.floor(Math.random() * blockTypes.length);
+  return blockTypes[index];
 }

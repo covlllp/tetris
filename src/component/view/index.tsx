@@ -27,6 +27,7 @@ export class View extends React.Component<ViewProps, {}> {
     canvas: HTMLCanvasElement,
     context: CanvasRenderingContext2D,
   ): void {
+    console.log(this.props.board);
     this.painter.setDimensions(canvas);
 
     this.painter.paintBoard({
